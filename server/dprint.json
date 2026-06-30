@@ -1,0 +1,53 @@
+{
+	"useTabs": true,
+	"indentWidth": 4,
+	"lineWidth": 100,
+
+	"typescript": {
+		"bracePosition": "nextLine",
+		"nextControlFlowPosition": "nextLine",
+		"quoteStyle": "alwaysSingle",
+		"trailingCommas": "onlyMultiLine",
+		"arrowFunction.useParentheses": "force"
+	},
+	"json": {
+		"trailingCommas": "never"
+	},
+	"markdown": {
+		"textWrap": "always"
+	},
+	"malva": {
+		"quotes": "single"
+	},
+	"markup": {
+		"quotes": "double"
+	},
+	"yaml": {},
+	"toml": {},
+
+	"includes": [
+		"**/*.{ts,tsx,js,jsx,cjs,mjs}",
+		"**/*.{json,jsonc}",
+		"**/*.md",
+		"**/*.toml",
+		"**/*.{css,scss,less}",
+		"**/*.{html,vue,svelte,astro}",
+		"**/*.{yaml,yml}"
+	],
+	"excludes": [
+		"**/node_modules",
+		"**/*-lock.json",
+		"**/dist",
+		"**/build",
+		"**/.git"
+	],
+	"plugins": [
+		"https://plugins.dprint.dev/typescript-0.95.15.wasm",
+		"https://plugins.dprint.dev/json-0.21.1.wasm",
+		"https://plugins.dprint.dev/markdown-0.21.1.wasm",
+		"https://plugins.dprint.dev/toml-0.7.0.wasm",
+		"https://plugins.dprint.dev/g-plane/malva-v0.15.2.wasm",
+		"https://plugins.dprint.dev/g-plane/markup_fmt-v0.26.0.wasm",
+		"https://plugins.dprint.dev/g-plane/pretty_yaml-v0.6.0.wasm"
+	]
+}
