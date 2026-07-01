@@ -15,7 +15,7 @@ export class AuthRepository
 			where: {
 				telegramId: telegramId,
 			},
-			update: {}, // Ничего не обновляем, если пользователь уже существует
+			update: {},
 			create: {
 				telegramId: telegramId,
 			},

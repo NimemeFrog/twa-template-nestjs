@@ -1,10 +1,9 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
-import * as crypto from 'crypto';
+import * as crypto from 'node:crypto';
 import { REPLAY_SAFE_TIME } from 'src/common/constants';
 import { TelegramUserData } from 'src/common/types/user';
-import { PrismaService } from '../../prisma/prisma.service';
 import { AuthRepository } from './auth.repository';
 
 @Injectable()

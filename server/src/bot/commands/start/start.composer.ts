@@ -14,7 +14,7 @@ export class StartComposer
 	{
 		this.composer.command('start', async (ctx) =>
 		{
-			commands.start(ctx);
+			this.commands.start(ctx);
 		});
 	}
 }

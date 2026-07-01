@@ -3,7 +3,6 @@ import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Bot, session } from 'grammy';
 import Redis from 'ioredis';
-import { PrismaService } from '../prisma/prisma.service';
 import { StartComposer } from './commands/start/start.composer';
 import { CTX, SessionData } from './context';
 import { I18nService } from './i18n.service';

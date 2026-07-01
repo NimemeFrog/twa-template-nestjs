@@ -9,7 +9,6 @@ export class StartCommands
 	{
 		await ctx.reply(ctx.t('start_text'));
 
-		// Вставляешь сюда свой актуальный HTTPS URL от Cloudflare (или ngrok/mkcert)
 		const webAppUrl = process.env.FRONTEND_URL ?? '';
 
 		const inlineKeyboard = new InlineKeyboard()
