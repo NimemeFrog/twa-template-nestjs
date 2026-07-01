@@ -5,7 +5,7 @@ import { JwtService } from '@nestjs/jwt';
 @Injectable()
 export class JwtAuthGuard implements CanActivate
 {
-	constructor(private jwtService: JwtService, private configService: ConfigService)
+	constructor(private jwtService: JwtService)
 	{}
 
 	async canActivate(context: ExecutionContext): Promise<boolean>
@@ -21,9 +21,7 @@ export class JwtAuthGuard implements CanActivate
 		const token = authHeader.split(' ')[1];
 		try
 		{
-			const payload = await this.jwtService.verifyAsync(token, {
-				secret: this.configService.get('JWT_SECRET'),
-			});
+			const payload = await this.jwtService.verifyAsync(token);
 			// Сохраняем payload данные юзера в request
 			request['user'] = payload;
 		}

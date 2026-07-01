@@ -8,31 +8,34 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL;
  * @returns {Promise<Response>} Ответ сервера.
  * @throws {Error} Пробрасывает ошибку, если запрос завершился неудачно.
  */
-export const apiFetch = async (endpoint: string, options: RequestInit = {}): Promise<Response> =>
+export const apiFetch = async <T = any>(endpoint: string, options: RequestInit = {}): Promise<T> =>
 {
-	const token = localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken');
 
-	const headers = new Headers(options.headers || {});
-	headers.set('Content-Type', 'application/json');
+    const headers = new Headers(options.headers || {});
+    headers.set('Content-Type', 'application/json');
 
-	if (token)
-	{
-		headers.set('Authorization', `Bearer ${token}`);
-	}
+    if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+    }
 
-	const config: RequestInit = {
-		...options,
-		headers,
-	};
+    const config: RequestInit = {
+        ...options,
+        headers,
+    };
 
-	const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, config);
 
-	if (response.status === 401)
-	{
-		console.warn('Токен истек или недействителен. Требуется повторная авторизация.');
-		localStorage.removeItem('accessToken');
-		window.location.reload();
-	}
+    if (response.status === 401) {
+        console.warn('Токен истек или недействителен. Требуется повторная авторизация.');
+        localStorage.removeItem('accessToken');
+        window.location.reload();
+        throw new Error('Unauthorized');
+    }
 
-	return response;
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return await response.json(); 
 };
